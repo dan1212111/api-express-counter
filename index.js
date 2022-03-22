@@ -42,8 +42,11 @@ app.delete("/counter", (req, res) => {
 
 /* extension 1 */
 app.put("/counter", (req, res) => {
-    counter = req.query.value
-    res.json([{counter: counter}, {carsCounter: carsCounter}])
+    const newCounter = Number(req.query.value)
+    if(!isNaN(newCounter)) {
+        counter = newCounter
+    }
+    res.json([{"counter": counter}, {carsCounter: carsCounter}])
 })
 
 /* extension 2 */
